@@ -1,0 +1,19 @@
+INSTALACIÓN POSTGRESQL 15
+
+# Cambiar el idioma de debian a español
+apt-get install locales-all
+dpkg-reconfigure locales
+locale-gen
+locale
+
+#Instalando postgresql 15
+apt-get install wget gnupg2 -y
+sh -c 'echo "deb http://apt.postgresql.org/pub/repos/apt bullseye-pgdg main" > /etc/apt/sources.list.d/pgdg.list'
+wget --quiet -O - https://www.postgresql.org/media/keys/ACCC4CF8.asc | apt-key add -
+apt-get update
+apt-get install postgresql-15 -y
+
+#Ingresar a postgres
+su - postgres
+psql
+select version();
